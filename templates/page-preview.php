@@ -54,20 +54,27 @@ $data_title = $data['title'] ?? '';
     <?php wp_head(); ?>
     <style>
         :root {
-            --sp-primary: #cc785c;
-            --sp-primary-active: #a9583e;
-            --sp-ink: #141413;
-            --sp-body: #3d3d3a;
-            --sp-muted: #6c6a64;
-            --sp-hairline: #e6dfd8;
-            --sp-canvas: #faf9f5;
-            --sp-surface-soft: #f5f0e8;
-            --sp-surface-card: #efe9de;
-            --sp-surface-dark: #181715;
-            --sp-surface-dark-elevated: #252320;
+            --sp-primary: #141414;
+            --sp-primary-active: #262626;
+            --sp-primary-disabled: #e0e0e0;
+            --sp-ink: #141414;
+            --sp-body: #141414;
+            --sp-body-strong: #141414;
+            --sp-muted: #707070;
+            --sp-muted-soft: #adadad;
+            --sp-hairline: #e0e0e0;
+            --sp-hairline-soft: #f0f0f0;
+            --sp-canvas: #ffffff;
+            --sp-surface-soft: #f3f3f3;
+            --sp-surface-card: #ffffff;
+            --sp-surface-cream-strong: #f0f0f0;
+            --sp-surface-dark: #141414;
+            --sp-surface-dark-elevated: #262626;
             --sp-on-primary: #ffffff;
-            --sp-on-dark: #faf9f5;
-            --sp-on-dark-soft: #a09d96;
+            --sp-on-dark: #ffffff;
+            --sp-on-dark-soft: #adadad;
+            --sp-field: #f0f0f0;
+            --sp-accent: #0066ff;
         }
 
         #wpadminbar {
@@ -92,7 +99,14 @@ $data_title = $data['title'] ?? '';
             height: 100%;
             background: var(--sp-canvas);
             color: var(--sp-body);
-            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-family:
+                Inter,
+                -apple-system,
+                "Helvetica Neue",
+                Arial,
+                sans-serif;
+            font-size: 16px;
+            line-height: 1.38;
         }
 
         .site-main {
@@ -121,8 +135,8 @@ $data_title = $data['title'] ?? '';
             justify-content: space-between;
             align-items: center;
             gap: 16px;
-            background: var(--sp-surface-soft);
-            border-bottom: 1px solid var(--sp-hairline);
+            background: var(--sp-canvas);
+            border-bottom: 1px solid var(--sp-hairline-soft);
             padding: 16px 20px;
             flex-shrink: 0;
             box-sizing: border-box;
@@ -155,11 +169,16 @@ $data_title = $data['title'] ?? '';
         .preview-title {
             margin: 0;
             color: var(--sp-ink);
-            font-family: "Cormorant Garamond", "Times New Roman", serif;
-            font-size: clamp(1.2rem, 2.4vw, 1.8rem);
-            font-weight: 500;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
+            font-family:
+                Inter,
+                -apple-system,
+                "Helvetica Neue",
+                Arial,
+                sans-serif;
+            font-size: clamp(1.25rem, 2.4vw, 2rem);
+            font-weight: 650;
+            line-height: 1.13;
+            letter-spacing: 0;
         }
 
         .preview-subtitle {
@@ -173,13 +192,14 @@ $data_title = $data['title'] ?? '';
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            min-height: 44px;
-            padding: 12px 18px;
+            gap: 6px;
+            min-height: 36px;
+            padding: 8px 14px;
             text-decoration: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 14px;
             font-weight: 600;
+            line-height: 1.4;
             transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
             white-space: nowrap;
             border: 1px solid transparent;
@@ -192,17 +212,19 @@ $data_title = $data['title'] ?? '';
         }
 
         .preview-btn-back:hover {
-            background: var(--sp-surface-card);
+            background: var(--sp-surface-soft);
             color: var(--sp-ink);
         }
 
         .preview-btn-primary {
             background: var(--sp-primary);
+            border-color: var(--sp-primary);
             color: var(--sp-on-primary);
         }
 
         .preview-btn-primary:hover {
             background: var(--sp-primary-active);
+            border-color: var(--sp-primary-active);
             color: var(--sp-on-primary);
         }
 
@@ -257,11 +279,11 @@ $data_title = $data['title'] ?? '';
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 56px 32px;
+            padding: 48px 32px;
             flex: 1;
-            border-radius: 16px;
+            border: 0;
+            border-radius: 12px;
             background: var(--sp-surface-soft);
-            border: 1px solid var(--sp-hairline);
         }
 
         .demo-icon {
@@ -271,20 +293,26 @@ $data_title = $data['title'] ?? '';
         }
 
         .demo-not-available h3 {
-            font-family: "Cormorant Garamond", "Times New Roman", serif;
-            font-size: clamp(1.55rem, 3.4vw, 2.2rem);
-            font-weight: 500;
-            letter-spacing: -0.03em;
-            margin-bottom: 1rem;
+            font-family:
+                Inter,
+                -apple-system,
+                "Helvetica Neue",
+                Arial,
+                sans-serif;
+            font-size: clamp(1.5rem, 3.4vw, 2rem);
+            font-weight: 650;
+            letter-spacing: 0;
+            line-height: 1.13;
+            margin: 0 0 1rem;
             color: var(--sp-ink);
         }
 
         .demo-not-available p {
-            font-size: 1rem;
+            font-size: 14px;
             color: var(--sp-muted);
             max-width: 500px;
-            margin-bottom: 2rem;
-            line-height: 1.6;
+            margin: 0 0 2rem;
+            line-height: 1.43;
         }
 
         .demo-actions {
@@ -297,13 +325,14 @@ $data_title = $data['title'] ?? '';
         .btn-demo-action {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 6px;
             justify-content: center;
-            min-height: 44px;
-            padding: 12px 18px;
-            border-radius: 8px;
+            min-height: 36px;
+            padding: 8px 14px;
+            border-radius: 10px;
             font-size: 14px;
             font-weight: 600;
+            line-height: 1.4;
             text-decoration: none;
             transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
             white-space: nowrap;
@@ -312,11 +341,13 @@ $data_title = $data['title'] ?? '';
 
         .btn-whatsapp-demo {
             background: var(--sp-primary);
+            border-color: var(--sp-primary);
             color: var(--sp-on-primary);
         }
 
         .btn-whatsapp-demo:hover {
             background: var(--sp-primary-active);
+            border-color: var(--sp-primary-active);
             color: var(--sp-on-primary);
         }
 
@@ -327,7 +358,7 @@ $data_title = $data['title'] ?? '';
         }
 
         .btn-back-demo:hover {
-            background: var(--sp-surface-card);
+            background: var(--sp-surface-soft);
             color: var(--sp-ink);
         }
 

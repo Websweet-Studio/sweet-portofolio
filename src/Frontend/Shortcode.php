@@ -83,7 +83,7 @@ class Shortcode
      * @param string $description
      * @return string
      */
-    private function render_output($shortcode_ids, $shortcode_category, $shortcode_title, $filter, $description = 'yes')
+    private function render_output($shortcode_ids, $shortcode_category, $shortcode_title, $filter, $description = 'no')
     {
         // Setup variables expected by the template
         $atts = array('filter' => $filter, 'description' => $description);

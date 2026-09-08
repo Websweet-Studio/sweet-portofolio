@@ -152,7 +152,7 @@ if (isset($shortcode_category) && !empty($shortcode_category)) {
             <script type="text/plain" id="portfolios-data"><?php echo is_array($data) ? json_encode(array_values($data), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) : '[]'; ?></script>
 
             <?php
-            $description_attr = (isset($atts) && is_array($atts) && isset($atts['description'])) ? $atts['description'] : 'yes';
+            $description_attr = (isset($atts) && is_array($atts) && isset($atts['description'])) ? $atts['description'] : 'no';
             $grid_config = array(
                 'initialPage' => max(1, (int) $current_page),
                 'initialCategory' => $jenis_web,

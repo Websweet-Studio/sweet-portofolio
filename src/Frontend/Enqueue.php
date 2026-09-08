@@ -24,7 +24,9 @@ class Enqueue
     public function enqueue_styles()
     {
         wp_enqueue_style('sweet-portofolio-fonts', 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Space+Grotesk:wght@500;600;700&display=swap', array(), null);
-        wp_enqueue_style('sweet-portofolio-style', SWEETPORTOFOLIO_URL . 'assets/css/frontend.css', array(), SWEETPORTOFOLIO_VERSION);
+        $style_path = SWEETPORTOFOLIO_PATH . 'assets/css/frontend.css';
+        $style_version = file_exists($style_path) ? (string) filemtime($style_path) : SWEETPORTOFOLIO_VERSION;
+        wp_enqueue_style('sweet-portofolio-style', SWEETPORTOFOLIO_URL . 'assets/css/frontend.css', array(), $style_version);
         wp_enqueue_script('jquery');
         $script_path = SWEETPORTOFOLIO_PATH . 'assets/js/script.js';
         $script_version = file_exists($script_path) ? (string) filemtime($script_path) : SWEETPORTOFOLIO_VERSION;
